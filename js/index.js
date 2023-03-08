@@ -1,5 +1,5 @@
 
-let continuar = true
+let ciclo = true
 const msjSelInicial  = "Ingresa el código del producto a consultar: \n" +
                        "a) DISCO DURO HDD 1 TB WESTERN DIGITAL \n" +
                        "b) MOUSE TRUST BASI OPTICO BLACK \n" +
@@ -45,8 +45,8 @@ function consulta() {
 
 
 function consultaPrecios() {
-    while(continuar) {
+    while(ciclo) {
         consulta()
-        continuar = confirm("¿Deseas realizar otra consulta?")
+        ciclo = confirm("¿Deseas realizar otra consulta?")
     }
 }
