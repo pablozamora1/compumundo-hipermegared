@@ -88,17 +88,29 @@ const pintarCarrito = () => {
 verCarrito.addEventListener("click", pintarCarrito);
 
 const eliminarProducto = (id) => {
-  const foundId = carrito.find((element) => element.id === id);
-
-
+  Swal.fire({
+    title: 'Desea eliminar el producto?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Si',
+    denyButtonText: `No`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      const foundId = carrito.find((element) => element.id === id);
   carrito = carrito.filter((carritoId) => {
     return carritoId !== foundId;
     
   });
-
+      Swal.fire('Producto Eliminado!', '', 'success')
+    } else if (result.isDenied) {
+      Swal.fire('El Producto no se elimino', '', 'info')
+    }
+    pintarCarrito();
+  })
   carritoCounter();
   saveLocal();
-  pintarCarrito();
+
 };
 const carritoCounter = () => {
   cantidadCarrito.style.display = "block";
