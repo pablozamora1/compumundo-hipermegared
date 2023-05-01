@@ -78,10 +78,10 @@ const pintarCarrito = () => {
       'Disfruta tu compra!',
       'success'
     )
-    carritolength = 0 ;
-    carrito.length = 0 ;
-    
     localStorage.removeItem("carrito");
+    carrito.length = 0 ;
+    carritoCounter();
+    pintarCarrito()
   })
 };
 
@@ -96,7 +96,7 @@ const eliminarProducto = (id) => {
     
   });
 
-  
+  carritoCounter();
   saveLocal();
   pintarCarrito();
 };
