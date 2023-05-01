@@ -100,13 +100,13 @@ const eliminarProducto = (id) => {
       const foundId = carrito.find((element) => element.id === id);
   carrito = carrito.filter((carritoId) => {
     return carritoId !== foundId;
-    
   });
       Swal.fire('Producto Eliminado!', '', 'success')
+      carritoCounter();
+      pintarCarrito();
     } else if (result.isDenied) {
       Swal.fire('El Producto no se elimino', '', 'info')
     }
-    pintarCarrito();
   })
   carritoCounter();
   saveLocal();
